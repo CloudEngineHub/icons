@@ -402,6 +402,16 @@ import { HandMetalIcon } from "./hand-metal";
 import { HeartHandshakeIcon } from "./heart-handshake";
 import { HeartPulseIcon } from "./heart-pulse";
 import { TruckIcon } from "./truck";
+import { WifiPenIcon } from "./wifi-pen";
+import { WifiSyncIcon } from "./wifi-sync";
+import { WifiCogIcon } from "./wifi-cog";
+import { SwitchCameraIcon } from "./switch-camera";
+import { SpotlightIcon } from "./spotlight";
+import { ProjectorIcon } from "./projector";
+import { SatelliteDishIcon } from "./satellite-dish";
+import { RouterIcon } from "./router";
+import { PhoneOutgoingIcon } from "./phone-outgoing";
+import { PhoneOffIcon } from "./phone-off";
 
 type IconListItem = {
   name: string;
@@ -410,6 +420,63 @@ type IconListItem = {
 };
 
 const ICON_LIST: IconListItem[] = [
+  
+  {
+    name: "phone-off",
+    icon: PhoneOffIcon,
+    keywords: ["phone", "off", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-outgoing",
+    icon: PhoneOutgoingIcon,
+    keywords: ["phone", "outgoing", "communication", "signal", "wireless"],
+  },
+  {
+    name: "router",
+    icon: RouterIcon,
+    keywords: ["router", "network", "communication", "signal", "wireless"],
+  },
+  {
+    name: "satellite-dish",
+    icon: SatelliteDishIcon,
+    keywords: ["satellite", "dish", "communication", "signal", "wireless"],
+  },
+  {
+    name: "projector",
+    icon: ProjectorIcon,
+    keywords: ["projector", "screen", "display", "video", "projection"],
+  },
+  {
+    name: "spotlight",
+    icon: SpotlightIcon,
+    keywords: [
+      "spotlight",
+      "light",
+      "brightness",
+      "illumination",
+      "brightness",
+    ],
+  },
+  {
+    name: "switch-camera",
+    icon: SwitchCameraIcon,
+    keywords: ["switch", "camera", "video", "photo", "capture"],
+  },
+  {
+    name: "wifi-cog",
+    icon: WifiCogIcon,
+    keywords: ["wifi", "cog", "settings", "configuration"],
+  },
+  {
+    name: "wifi-sync",
+    icon: WifiSyncIcon,
+    keywords: ["wifi", "sync", "synchronize", "update"],
+  },
+  {
+    name: "wifi-pen",
+    icon: WifiPenIcon,
+    keywords: ["wifi", "pen", "edit", "write"],
+  },
   {
     name: "layout-grid",
     icon: LayoutGridIcon,
