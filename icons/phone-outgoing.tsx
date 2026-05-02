@@ -16,10 +16,7 @@ interface PhoneOutgoingIconProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const PHONE_OUTGOING_VARIANTS: Variants = {
-  normal: {
-    rotate: 0,
-    scale: 1,
-  },
+  initial: { scale: 1 },
   animate: {
     scale: [1, 1.1, 1],
     transition: {
@@ -30,13 +27,22 @@ const PHONE_OUTGOING_VARIANTS: Variants = {
 };
 
 const ARROW_VARIANTS: Variants = {
-  normal: { y: 0, x: 0 },
-  animate: { y: [0, -1.8, 0], x: [1.2, 0] },
-};
-
-const ARROW_TRANSITION: Transition = {
-  times: [0, 0.4, 1],
-  duration: 0.8,
+  normal: {
+    y: 0,
+    x: 0,
+    scale: 1,
+    opacity: 1,
+  },
+  animate: {
+    y: [6, 0],
+    x: [-4, 0],
+    scale: [1, 1.05, 1],
+    opacity: [0, 0.5, 1],
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
 };
 
 const PhoneOutgoingIcon = forwardRef<
@@ -93,21 +99,22 @@ const PhoneOutgoingIcon = forwardRef<
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        animate={controls}
-        initial="normal"
-        variants={PHONE_OUTGOING_VARIANTS}
         style={{ overflow: "visible" }}
       >
         <motion.g
           animate={controls}
-          initial="normal"
-          transition={ARROW_TRANSITION}
+          initial={{ y: 0, opacity: 1 }}
           variants={ARROW_VARIANTS}
         >
           <path d="m16 8 6-6" />
           <path d="M22 8V2h-6" />
         </motion.g>
-        <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+        <motion.path
+          d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
+          animate={controls}
+          initial="initial"
+          variants={PHONE_OUTGOING_VARIANTS}
+        />
       </motion.svg>
     </div>
   );

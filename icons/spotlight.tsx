@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, useAnimation, Variants } from "motion/react";
+import type { Variants } from "motion/react";
+import { motion, useAnimation } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+
 import { cn } from "@/lib/utils";
 
 export interface SpotlightIconHandle {
@@ -14,10 +16,13 @@ interface SpotlightIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const SPOTLIGHT_VARIANTS: Variants = {
-  normal: {
-    rotate: 0,
-  },
+const LINE_VARIANTS: Variants = {
+  visible: { pathLength: 1, opacity: 1 },
+  hidden: { pathLength: 0, opacity: 0 },
+};
+
+const BEAM_GROUP_VARIANTS: Variants = {
+  normal: { rotate: 0 },
   animate: {
     rotate: [0, -10, 10, -5, 5, 0],
     transition: {
@@ -27,75 +32,64 @@ const SPOTLIGHT_VARIANTS: Variants = {
   },
 };
 
-const PATH_VARIANTS: Variants = {
-  normal: {
-    opacity: 1,
-    transition: {
-      duration: 1.1,
-    },
-  },
-  fadeOut: {
-    opacity: 0,
-    transition: { duration: 1.1 },
-  },
-  fadeIn: (i: number) => ({
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 20,
-      delay: i * 0.1,
-    },
-  }),
-};
-
 const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+    const lineControls = useAnimation();
     const beamControls = useAnimation();
-    const pathControls = useAnimation();
-    const isControlledRef = useRef(false);
+    const isRefControlled = ref != null;
 
-    const runPathIntro = useCallback(async () => {
-      await pathControls.start("fadeOut");
-      pathControls.start("fadeIn");
-    }, [pathControls]);
+    const runLineIntro = useCallback(async () => {
+      await lineControls.start((i: number) => ({
+        pathLength: 0,
+        opacity: 0,
+        transition: { delay: i * 0.1, duration: 0.3 },
+      }));
+      await lineControls.start((i: number) => ({
+        pathLength: 1,
+        opacity: 1,
+        transition: { delay: i * 0.1, duration: 0.3 },
+      }));
+    }, [lineControls]);
 
-    useImperativeHandle(ref, () => {
-      isControlledRef.current = ref != null;
-      return {
-        startAnimation: async () => {
-          void beamControls.start("animate");
-          await runPathIntro();
-        },
-        stopAnimation: () => {
-          beamControls.start("normal");
-          pathControls.start("normal");
-        },
-      };
-    }, [beamControls, pathControls, ref, runPathIntro]);
+    const startAll = useCallback(async () => {
+      void beamControls.start("animate");
+      await runLineIntro();
+    }, [beamControls, runLineIntro]);
+
+    const stopAll = useCallback(() => {
+      void lineControls.start("visible");
+      void beamControls.start("normal");
+    }, [beamControls, lineControls]);
+
+    useImperativeHandle(
+      ref,
+      () => ({
+        startAnimation: () => void startAll(),
+        stopAnimation: () => stopAll(),
+      }),
+      [startAll, stopAll],
+    );
 
     const handleMouseEnter = useCallback(
       async (e: React.MouseEvent<HTMLDivElement>) => {
-        if (isControlledRef.current) {
+        if (isRefControlled) {
           onMouseEnter?.(e);
         } else {
-          void beamControls.start("animate");
-          await runPathIntro();
+          await startAll();
         }
       },
-      [beamControls, onMouseEnter, runPathIntro],
+      [isRefControlled, onMouseEnter, startAll],
     );
 
     const handleMouseLeave = useCallback(
       (e: React.MouseEvent<HTMLDivElement>) => {
-        if (isControlledRef.current) {
+        if (isRefControlled) {
           onMouseLeave?.(e);
         } else {
-          beamControls.start("normal");
-          pathControls.start("normal");
+          stopAll();
         }
       },
-      [beamControls, onMouseLeave, pathControls],
+      [isRefControlled, onMouseLeave, stopAll],
     );
 
     return (
@@ -105,7 +99,7 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <motion.svg
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
@@ -116,36 +110,38 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <motion.path
-            d="M15.295 19.562 16 22"
-            animate={pathControls}
-            custom={0}
-            initial={{ opacity: 1 }}
-            variants={PATH_VARIANTS}
-          />
-          <motion.path
-            d="m17 16 3.758 2.098"
-            animate={pathControls}
-            custom={1}
-            initial={{ opacity: 1 }}
-            variants={PATH_VARIANTS}
-          />
-          <motion.path
-            d="m19 12.5 3.026-.598"
-            animate={pathControls}
-            custom={2}
-            initial={{ opacity: 1 }}
-            variants={PATH_VARIANTS}
-          />
+          <path d="M8 9V2" />
 
-          <motion.path
-            d="M7.61 6.3a3 3 0 0 0-3.92 1.3l-1.38 2.79a3 3 0 0 0 1.3 3.91l6.89 3.597a1 1 0 0 0 1.342-.447l3.106-6.211a1 1 0 0 0-.447-1.341z"
+          <motion.g
             animate={beamControls}
             initial="normal"
-            variants={SPOTLIGHT_VARIANTS}
-          />
-          <motion.path d="M8 9V2" />
-        </motion.svg>
+            style={{ transformOrigin: "8px 10px" }}
+            variants={BEAM_GROUP_VARIANTS}
+          >
+            <path d="M7.61 6.3a3 3 0 0 0-3.92 1.3l-1.38 2.79a3 3 0 0 0 1.3 3.91l6.89 3.597a1 1 0 0 0 1.342-.447l3.106-6.211a1 1 0 0 0-.447-1.341z" />
+            <motion.path
+              animate={lineControls}
+              custom={0}
+              d="M15.295 19.562 16 22"
+              initial="visible"
+              variants={LINE_VARIANTS}
+            />
+            <motion.path
+              animate={lineControls}
+              custom={1}
+              d="m17 16 3.758 2.098"
+              initial="visible"
+              variants={LINE_VARIANTS}
+            />
+            <motion.path
+              animate={lineControls}
+              custom={2}
+              d="m19 12.5 3.026-.598"
+              initial="visible"
+              variants={LINE_VARIANTS}
+            />
+          </motion.g>
+        </svg>
       </div>
     );
   },

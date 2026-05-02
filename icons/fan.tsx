@@ -1,30 +1,41 @@
 "use client";
 
-import { motion, Transition, useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-export interface WifiSyncIconHandle {
+export interface FanIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface WifiSyncIconProps extends HTMLAttributes<HTMLDivElement> {
+interface FanIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const SYNC_VARIANTS: Variants = {
-  normal: { rotate: 0 },
-  animate: { rotate: -360 },
+const FAN_VARIANTS: Variants = {
+  normal: {
+    rotate: 0,
+    transition: {
+      type: "spring",
+      stiffness: 60,
+      damping: 10,
+      duration: 0.5,
+    },
+  },
+  animate: {
+    rotate: 270,
+    transition: {
+      delay: 0.1,
+      type: "spring",
+      stiffness: 80,
+      damping: 13,
+    },
+  },
 };
 
-const SYNC_TRANSITION: Transition = {
-  duration: 0.6,
-  ease: "easeInOut",
-};
-
-const WifiSyncIcon = forwardRef<WifiSyncIconHandle, WifiSyncIconProps>(
+const FanIcon = forwardRef<FanIconHandle, FanIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
@@ -68,35 +79,26 @@ const WifiSyncIcon = forwardRef<WifiSyncIconHandle, WifiSyncIconProps>(
       >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
+          width={size}
+          height={size}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          animate={controls}
+          initial="normal"
+          variants={FAN_VARIANTS}
         >
-          <path d="M2 8.82a15 15 0 0 1 20 0" />
-          <path d="M5 12.86a10 10 0 0 1 3-2.032" />
-          <path d="M8.5 16.429h.01" />
-          <motion.g
-            animate={controls}
-            initial="normal"
-            transition={SYNC_TRANSITION}
-            variants={SYNC_VARIANTS}
-          >
-            <path d="M11.965 10.105v4L13.5 12.5a5 5 0 0 1 8 1.5" />
-            <path d="M11.965 14.105h4" />
-            <path d="M17.965 18.105h4L20.43 19.71a5 5 0 0 1-8-1.5" />
-            <path d="M21.965 22.105v-4" />
-          </motion.g>
+          <path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z" />
+          <path d="M12 12v.01" />
         </motion.svg>
       </div>
     );
   },
 );
 
-WifiSyncIcon.displayName = "WifiSyncIcon";
+FanIcon.displayName = "FanIcon";
 
-export { WifiSyncIcon };
+export { FanIcon };

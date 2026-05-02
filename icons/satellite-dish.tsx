@@ -21,7 +21,7 @@ const SATELLITE_DISH_VARIANTS: Variants = {
   },
   animate: {
     y: [0, 1, 2, 0],
-    rotate: [0, -50, 0],
+    rotate: [0, -15, 0],
     transition: {
       duration: 1.5,
       ease: "easeInOut",

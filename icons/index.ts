@@ -412,6 +412,7 @@ import { SatelliteDishIcon } from "./satellite-dish";
 import { RouterIcon } from "./router";
 import { PhoneOutgoingIcon } from "./phone-outgoing";
 import { PhoneOffIcon } from "./phone-off";
+import { FanIcon } from "./fan";
 
 type IconListItem = {
   name: string;
@@ -420,7 +421,6 @@ type IconListItem = {
 };
 
 const ICON_LIST: IconListItem[] = [
-  
   {
     name: "phone-off",
     icon: PhoneOffIcon,
@@ -456,6 +456,11 @@ const ICON_LIST: IconListItem[] = [
       "illumination",
       "brightness",
     ],
+  },
+  {
+    name: "fan",
+    icon: FanIcon,
+    keywords: ["fan", "air", "ventilation", "breeze"],
   },
   {
     name: "switch-camera",
