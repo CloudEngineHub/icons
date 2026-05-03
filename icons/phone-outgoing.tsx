@@ -28,18 +28,18 @@ const PHONE_OUTGOING_VARIANTS: Variants = {
 
 const ARROW_VARIANTS: Variants = {
   normal: {
-    y: 0,
-    x: 0,
     scale: 1,
-    opacity: 1,
+    translateX: 0,
+    translateY: 0,
   },
   animate: {
-    y: [6, 0],
-    x: [-4, 0],
-    scale: [1, 1.05, 1],
-    opacity: [0, 0.5, 1],
+    scale: [1, 0.85, 1],
+    translateX: [0, -4, 0],
+    translateY: [0, 2, 0],
+    originX: 1,
+    originY: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.5,
       ease: "easeInOut",
     },
   },
@@ -91,14 +91,17 @@ const PhoneOutgoingIcon = forwardRef<
     >
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width={size}
+        height={size}
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        animate={controls}
+        className="overflow-visible"
+        overflow="visible"
         style={{ overflow: "visible" }}
       >
         <motion.g

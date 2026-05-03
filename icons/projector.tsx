@@ -3,7 +3,7 @@
 import type { Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import type { HTMLAttributes } from "react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { forwardRef, useCallback, useImperativeHandle } from "react";
 import { cn } from "@/lib/utils";
 
 export interface ProjectorIconHandle {
@@ -16,8 +16,22 @@ interface ProjectorIconProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const RAY_LINE_VARIANTS: Variants = {
-  visible: { pathLength: 1, opacity: 1, scale: 1 },
-  hidden: { pathLength: 0, opacity: 0, scale: 1 },
+  hidden: {
+    pathLength: 0,
+    opacity: 0,
+  },
+  animate: {
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+  },
 };
 
 const PROJECTOR_BODY_VARIANTS: Variants = {
@@ -41,34 +55,17 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
     const bodyControls = useAnimation();
     const isRefControlled = ref != null;
 
-    const runRayDrawSequence = useCallback(async () => {
-      await pathControls.start((i: number) => ({
-        scale: [1, 1.08, 1],
-        pathLength: 0,
-        opacity: 0,
-        transition: { delay: i * 0.1, duration: 0.3 },
-      }));
-      await pathControls.start((i: number) => ({
-        scale: [1, 1.08, 1],
-        pathLength: 1,
-        opacity: 1,
-        transition: { delay: i * 0.1, duration: 0.35, ease: "easeOut" },
-      }));
-    }, [pathControls]);
-
-    const resetRaysVisible = useCallback(() => {
-      void pathControls.start("visible");
-    }, [pathControls]);
-
     const startAll = useCallback(async () => {
       void bodyControls.start("animate");
-      await runRayDrawSequence();
-    }, [bodyControls, runRayDrawSequence]);
+
+      await pathControls.start("hidden");
+      await pathControls.start("animate");
+    }, [bodyControls, pathControls]);
 
     const stopAll = useCallback(() => {
-      resetRaysVisible();
       void bodyControls.start("normal");
-    }, [bodyControls, resetRaysVisible]);
+      void pathControls.start("visible");
+    }, [bodyControls, pathControls]);
 
     useImperativeHandle(
       ref,
@@ -105,7 +102,7 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
       <div
         className={cn(className)}
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onMouseLeave={handleMouseLeave}
         {...props}
       >
         <svg
@@ -121,26 +118,20 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
         >
           <motion.path
             animate={pathControls}
-            custom={0}
             d="M5 7 3 5"
             initial="visible"
-            style={{ transformBox: "fill-box" as const }}
             variants={RAY_LINE_VARIANTS}
           />
           <motion.path
             animate={pathControls}
-            custom={1}
             d="M9 6V3"
             initial="visible"
-            style={{ transformBox: "fill-box" as const }}
             variants={RAY_LINE_VARIANTS}
           />
           <motion.path
             animate={pathControls}
-            custom={2}
             d="m13 7 2-2"
             initial="visible"
-            style={{ transformBox: "fill-box" as const }}
             variants={RAY_LINE_VARIANTS}
           />
           <motion.g
