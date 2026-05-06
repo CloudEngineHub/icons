@@ -56,24 +56,33 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
     const isRefControlled = ref != null;
 
     const startAll = useCallback(async () => {
-      void bodyControls.start("animate");
-
+      bodyControls.start("animate").catch(() => {
+        // ignore when interrupted by a new animation
+      });
       await pathControls.start("hidden");
       await pathControls.start("animate");
     }, [bodyControls, pathControls]);
 
     const stopAll = useCallback(() => {
-      void bodyControls.start("normal");
-      void pathControls.start("visible");
+      bodyControls.start("normal").catch(() => {
+        // ignore when interrupted
+      });
+      pathControls.start("visible").catch(() => {
+        // ignore when interrupted
+      });
     }, [bodyControls, pathControls]);
 
     useImperativeHandle(
       ref,
       () => ({
-        startAnimation: () => void startAll(),
+        startAnimation: () => {
+          startAll().catch(() => {
+            // ignore when interrupted
+          });
+        },
         stopAnimation: () => stopAll(),
       }),
-      [startAll, stopAll],
+      [startAll, stopAll]
     );
 
     const handleMouseEnter = useCallback(
@@ -84,7 +93,7 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
           await startAll();
         }
       },
-      [isRefControlled, onMouseEnter, startAll],
+      [isRefControlled, onMouseEnter, startAll]
     );
 
     const handleMouseLeave = useCallback(
@@ -95,7 +104,7 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
           stopAll();
         }
       },
-      [isRefControlled, onMouseLeave, stopAll],
+      [isRefControlled, onMouseLeave, stopAll]
     );
 
     return (
@@ -106,15 +115,15 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
         {...props}
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={size}
-          height={size}
-          viewBox="0 0 24 24"
           fill="none"
+          height={size}
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width={size}
+          xmlns="http://www.w3.org/2000/svg"
         >
           <motion.path
             animate={pathControls}
@@ -146,7 +155,7 @@ const ProjectorIcon = forwardRef<ProjectorIconHandle, ProjectorIconProps>(
         </svg>
       </div>
     );
-  },
+  }
 );
 
 ProjectorIcon.displayName = "ProjectorIcon";

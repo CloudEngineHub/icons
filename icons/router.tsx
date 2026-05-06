@@ -1,10 +1,9 @@
 "use client";
 
-import { useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface RouterIconHandle {
   startAnimation: () => void;
@@ -67,7 +66,7 @@ const RouterIcon = forwardRef<RouterIconHandle, RouterIconProps>(
           await runPathIntro();
         }
       },
-      [onMouseEnter, runPathIntro],
+      [onMouseEnter, runPathIntro]
     );
 
     const handleMouseLeave = useCallback(
@@ -78,7 +77,7 @@ const RouterIcon = forwardRef<RouterIconHandle, RouterIconProps>(
           pathControls.start("normal");
         }
       },
-      [onMouseLeave, pathControls],
+      [onMouseLeave, pathControls]
     );
 
     return (
@@ -89,38 +88,38 @@ const RouterIcon = forwardRef<RouterIconHandle, RouterIconProps>(
         {...props}
       >
         <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={size}
-          height={size}
-          viewBox="0 0 24 24"
           fill="none"
+          height={size}
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width={size}
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <rect width="20" height="8" x="2" y="14" rx="2" />
+          <rect height="8" rx="2" width="20" x="2" y="14" />
           <path d="M6.01 18H6" />
           <path d="M10.01 18H10" />
           <path d="M15 10v4" />
           <motion.path
-            d="M17.84 7.17a4 4 0 0 0-5.66 0"
             animate={pathControls}
             custom={1}
+            d="M17.84 7.17a4 4 0 0 0-5.66 0"
             initial={{ opacity: 1 }}
             variants={PATH_VARIANTS}
           />
           <motion.path
-            d="M20.66 4.34a8 8 0 0 0-11.31 0"
             animate={pathControls}
             custom={2}
+            d="M20.66 4.34a8 8 0 0 0-11.31 0"
             initial={{ opacity: 1 }}
             variants={PATH_VARIANTS}
           />
         </motion.svg>
       </div>
     );
-  },
+  }
 );
 
 RouterIcon.displayName = "RouterIcon";

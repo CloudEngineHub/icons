@@ -255,6 +255,16 @@ import { PoundSterlingIcon } from "@/icons/pound-sterling";
 import { RabbitIcon } from "@/icons/rabbit";
 import { RadioIcon } from "@/icons/radio";
 import { RadioTowerIcon } from "@/icons/radio-tower";
+import { ReceiptIcon } from "@/icons/receipt";
+import { ReceiptCentIcon } from "@/icons/receipt-cent";
+import { ReceiptEuroIcon } from "@/icons/receipt-euro";
+import { ReceiptIndianRupeeIcon } from "@/icons/receipt-indian-rupee";
+import { ReceiptJapaneseYenIcon } from "@/icons/receipt-japanese-yen";
+import { ReceiptPoundSterlingIcon } from "@/icons/receipt-pound-sterling";
+import { ReceiptRussianRubleIcon } from "@/icons/receipt-russian-ruble";
+import { ReceiptSwissFrancIcon } from "@/icons/receipt-swiss-franc";
+import { ReceiptTextIcon } from "@/icons/receipt-text";
+import { ReceiptTurkishLiraIcon } from "@/icons/receipt-turkish-lira";
 import { RedoIcon } from "@/icons/redo";
 import { RedoDotIcon } from "@/icons/redo-dot";
 import { RefreshCCWIcon } from "@/icons/refresh-ccw";
@@ -362,6 +372,7 @@ import { CornerRightDownIcon } from "./corner-right-down";
 import { CornerRightUpIcon } from "./corner-right-up";
 import { CornerUpLeftIcon } from "./corner-up-left";
 import { CornerUpRightIcon } from "./corner-up-right";
+import { FanIcon } from "./fan";
 import { FolderArchiveIcon } from "./folder-archive";
 import { FolderCheckIcon } from "./folder-check";
 import { FolderClockIcon } from "./folder-clock";
@@ -402,18 +413,17 @@ import { HandHelpingIcon } from "./hand-helping";
 import { HandMetalIcon } from "./hand-metal";
 import { HeartHandshakeIcon } from "./heart-handshake";
 import { HeartPulseIcon } from "./heart-pulse";
+import { PhoneOffIcon } from "./phone-off";
+import { PhoneOutgoingIcon } from "./phone-outgoing";
+import { ProjectorIcon } from "./projector";
+import { RouterIcon } from "./router";
+import { SatelliteDishIcon } from "./satellite-dish";
+import { SpotlightIcon } from "./spotlight";
+import { SwitchCameraIcon } from "./switch-camera";
 import { TruckIcon } from "./truck";
+import { WifiCogIcon } from "./wifi-cog";
 import { WifiPenIcon } from "./wifi-pen";
 import { WifiSyncIcon } from "./wifi-sync";
-import { WifiCogIcon } from "./wifi-cog";
-import { SwitchCameraIcon } from "./switch-camera";
-import { SpotlightIcon } from "./spotlight";
-import { ProjectorIcon } from "./projector";
-import { SatelliteDishIcon } from "./satellite-dish";
-import { RouterIcon } from "./router";
-import { PhoneOutgoingIcon } from "./phone-outgoing";
-import { PhoneOffIcon } from "./phone-off";
-import { FanIcon } from "./fan";
 
 type IconListItem = {
   name: string;
@@ -422,7 +432,6 @@ type IconListItem = {
 };
 
 const ICON_LIST: IconListItem[] = [
-  
   {
     name: "receipt",
     icon: ReceiptIcon,
@@ -436,7 +445,7 @@ const ICON_LIST: IconListItem[] = [
   {
     name: "receipt-euro",
     icon: ReceiptEuroIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "euro", ],
+    keywords: ["receipt", "invoice", "receipt icon", "euro"],
   },
   {
     name: "receipt-indian-rupee",
@@ -451,7 +460,13 @@ const ICON_LIST: IconListItem[] = [
   {
     name: "receipt-pound-sterling",
     icon: ReceiptPoundSterlingIcon,
-    keywords: ["receipt", "invoice", "receipt icon", "pound sterling", "sterling"],
+    keywords: [
+      "receipt",
+      "invoice",
+      "receipt icon",
+      "pound sterling",
+      "sterling",
+    ],
   },
   {
     name: "receipt-russian-ruble",

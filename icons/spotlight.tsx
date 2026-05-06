@@ -47,22 +47,32 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
     const isRefControlled = ref != null;
 
     const startAll = useCallback(() => {
-      void beamControls.start("animate");
-      void lineControls.start("animate");
+      beamControls.start("animate").catch(() => {
+        // ignore when interrupted by a new animation
+      });
+      lineControls.start("animate").catch(() => {
+        // ignore when interrupted by a new animation
+      });
     }, [beamControls, lineControls]);
 
     const stopAll = useCallback(() => {
-      void beamControls.start("normal");
-      void lineControls.start("visible");
+      beamControls.start("normal").catch(() => {
+        // ignore when interrupted
+      });
+      lineControls.start("visible").catch(() => {
+        // ignore when interrupted
+      });
     }, [beamControls, lineControls]);
 
     useImperativeHandle(
       ref,
       () => ({
-        startAnimation: () => void startAll(),
+        startAnimation: () => {
+          startAll();
+        },
         stopAnimation: () => stopAll(),
       }),
-      [startAll, stopAll],
+      [startAll, stopAll]
     );
 
     const handleMouseEnter = useCallback(
@@ -73,7 +83,7 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
           startAll();
         }
       },
-      [isRefControlled, onMouseEnter, startAll],
+      [isRefControlled, onMouseEnter, startAll]
     );
 
     const handleMouseLeave = useCallback(
@@ -84,7 +94,7 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
           stopAll();
         }
       },
-      [isRefControlled, onMouseLeave, stopAll],
+      [isRefControlled, onMouseLeave, stopAll]
     );
 
     return (
@@ -95,16 +105,16 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
         {...props}
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={size}
-          height={size}
-          viewBox="0 0 24 24"
           fill="none"
+          height={size}
           stroke="currentColor"
-          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          strokeWidth="2"
           style={{ overflow: "visible" }}
+          viewBox="0 0 24 24"
+          width={size}
+          xmlns="http://www.w3.org/2000/svg"
         >
           <motion.g
             animate={beamControls}
@@ -133,7 +143,7 @@ const SpotlightIcon = forwardRef<SpotlightIconHandle, SpotlightIconProps>(
         </svg>
       </div>
     );
-  },
+  }
 );
 
 SpotlightIcon.displayName = "SpotlightIcon";

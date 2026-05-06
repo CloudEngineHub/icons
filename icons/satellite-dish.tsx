@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useAnimation, Variants } from "motion/react";
+import { motion, useAnimation, type Variants } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -68,8 +68,7 @@ const SatelliteDishIcon = forwardRef<
     isControlledRef.current = ref != null;
     return {
       startAnimation: async () => {
-        void svgControls.start("animate");
-        await runPathIntro();
+        await Promise.all([svgControls.start("animate"), runPathIntro()]);
       },
       stopAnimation: () => {
         svgControls.start("normal");
@@ -83,11 +82,10 @@ const SatelliteDishIcon = forwardRef<
       if (isControlledRef.current) {
         onMouseEnter?.(e);
       } else {
-        void svgControls.start("animate");
-        await runPathIntro();
+        await Promise.all([svgControls.start("animate"), runPathIntro()]);
       }
     },
-    [onMouseEnter, runPathIntro, svgControls],
+    [onMouseEnter, runPathIntro, svgControls]
   );
 
   const handleMouseLeave = useCallback(
@@ -99,7 +97,7 @@ const SatelliteDishIcon = forwardRef<
         pathControls.start("normal");
       }
     },
-    [onMouseLeave, pathControls, svgControls],
+    [onMouseLeave, pathControls, svgControls]
   );
 
   return (
@@ -110,32 +108,32 @@ const SatelliteDishIcon = forwardRef<
       {...props}
     >
       <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
+        animate={svgControls}
         fill="none"
+        height={size}
+        initial="normal"
         stroke="currentColor"
-        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        animate={svgControls}
-        initial="normal"
+        strokeWidth="2"
         variants={SATELLITE_DISH_VARIANTS}
+        viewBox="0 0 24 24"
+        width={size}
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path d="M4 10a7.31 7.31 0 0 0 10 10Z" />
         <path d="m9 15 3-3" />
         <motion.path
-          d="M17 13a6 6 0 0 0-6-6"
           animate={pathControls}
           custom={1}
+          d="M17 13a6 6 0 0 0-6-6"
           initial={{ opacity: 1 }}
           variants={PATH_VARIANTS}
         />
         <motion.path
-          d="M21 13A10 10 0 0 0 11 3"
           animate={pathControls}
           custom={2}
+          d="M21 13A10 10 0 0 0 11 3"
           initial={{ opacity: 1 }}
           variants={PATH_VARIANTS}
         />
