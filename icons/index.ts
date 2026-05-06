@@ -359,6 +359,7 @@ import { BatteryChargingIcon } from "./battery-charging";
 import { BatteryPlusIcon } from "./battery-plus";
 import { BatteryWarningIcon } from "./battery-warning";
 import { BellElectricIcon } from "./bell-electric";
+import { BriefcaseBusinessIcon } from "./briefcase-business";
 import { ChessBishopIcon } from "./chess-bishop";
 import { ChessKingIcon } from "./chess-king";
 import { ChessKnightIcon } from "./chess-knight";
