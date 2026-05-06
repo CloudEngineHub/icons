@@ -122,6 +122,7 @@ import { ConstructionIcon } from "@/icons/construction";
 import { ContrastIcon } from "@/icons/contrast";
 import { CookingPotIcon } from "@/icons/cooking-pot";
 import { CopyIcon } from "@/icons/copy";
+import { CreditCardIcon } from "@/icons/credit-card";
 import { CpuIcon } from "@/icons/cpu";
 import { CupSodaIcon } from "@/icons/cup-soda";
 import { CursorClickIcon } from "@/icons/cursor-click";
@@ -340,6 +341,7 @@ import { UsersIcon } from "@/icons/users";
 import { VibrateIcon } from "@/icons/vibrate";
 import { VolumeIcon } from "@/icons/volume";
 import { WashingMachineIcon } from "@/icons/washing-machine";
+import { WalletIcon } from "@/icons/wallet";
 import { WavesIcon } from "@/icons/waves";
 import { WavesLadderIcon } from "@/icons/waves-ladder";
 import { WaypointsIcon } from "@/icons/waypoints";
@@ -488,6 +490,32 @@ const ICON_LIST: IconListItem[] = [
     name: "receipt-turkish-lira",
     icon: ReceiptTurkishLiraIcon,
     keywords: ["receipt", "invoice", "receipt icon", "turkish lira", "lira"],
+  },
+  {
+    name: "wallet",
+    icon: WalletIcon,
+    keywords: [
+      "wallet",
+      "money",
+      "purse",
+      "billfold",
+      "cash",
+      "finance",
+      "payment",
+    ],
+  },
+  {
+    name: "credit-card",
+    icon: CreditCardIcon,
+    keywords: [
+      "credit card",
+      "card",
+      "payment",
+      "debit",
+      "money",
+      "finance",
+      "bank",
+    ],
   },
   {
     name: "stamp",
