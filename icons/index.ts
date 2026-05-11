@@ -366,6 +366,7 @@ import { BatteryChargingIcon } from "./battery-charging";
 import { BatteryPlusIcon } from "./battery-plus";
 import { BatteryWarningIcon } from "./battery-warning";
 import { BellElectricIcon } from "./bell-electric";
+import { BicepsFlexedIcon } from "./biceps-flexed";
 import { ChessBishopIcon } from "./chess-bishop";
 import { ChessKingIcon } from "./chess-king";
 import { ChessKnightIcon } from "./chess-knight";
@@ -420,6 +421,11 @@ import { HandHelpingIcon } from "./hand-helping";
 import { HandMetalIcon } from "./hand-metal";
 import { HeartHandshakeIcon } from "./heart-handshake";
 import { HeartPulseIcon } from "./heart-pulse";
+import { PhoneIcon } from "./phone";
+import { PhoneCallIcon } from "./phone-call";
+import { PhoneForwardedIcon } from "./phone-forwarded";
+import { PhoneIncomingIcon } from "./phone-incoming";
+import { PhoneMissedIcon } from "./phone-missed";
 import { PhoneOffIcon } from "./phone-off";
 import { ProjectorIcon } from "./projector";
 import { RouterIcon } from "./router";
@@ -618,6 +624,45 @@ const ICON_LIST: IconListItem[] = [
       "official",
       "document",
     ],
+  },
+  {
+    name: "biceps-flexed",
+    icon: BicepsFlexedIcon,
+    keywords: [
+      "biceps",
+      "flexed",
+      "muscle",
+      "arm",
+      "strong",
+      "fitness",
+      "workout",
+      "gym",
+    ],
+  },
+  {
+    name: "phone",
+    icon: PhoneIcon,
+    keywords: ["phone", "call", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-call",
+    icon: PhoneCallIcon,
+    keywords: ["phone", "call", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-forwarded",
+    icon: PhoneForwardedIcon,
+    keywords: ["phone", "forwarded", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-incoming",
+    icon: PhoneIncomingIcon,
+    keywords: ["phone", "incoming", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-missed",
+    icon: PhoneMissedIcon,
+    keywords: ["phone", "missed", "communication", "signal", "wireless"],
   },
   {
     name: "phone-off",
