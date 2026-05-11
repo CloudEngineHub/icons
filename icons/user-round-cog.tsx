@@ -5,26 +5,26 @@ import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-export interface SwitchCameraIconHandle {
+export interface UserRoundCogIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface SwitchCameraIconProps extends HTMLAttributes<HTMLDivElement> {
+interface UserRoundCogIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const PATH_VARIANTS: Variants = {
-  normal: { pathLength: 1 },
-  animate: {
-    pathLength: [0, 1],
-    transition: { duration: 0.4, ease: "linear" },
-  },
+const COG_VARIANTS: Variants = {
+  normal: { rotate: 0 },
+  animate: { rotate: 180 },
 };
 
-const SwitchCameraIcon = forwardRef<
-  SwitchCameraIconHandle,
-  SwitchCameraIconProps
+const COG_TRANSITION = {
+  transition: { type: "spring", stiffness: 50, damping: 10 },
+};
+const UserRoundCogIcon = forwardRef<
+  UserRoundCogIconHandle,
+  UserRoundCogIconProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
   const controls = useAnimation();
   const isControlledRef = useRef(false);
@@ -66,48 +66,40 @@ const SwitchCameraIcon = forwardRef<
       onMouseLeave={handleMouseLeave}
       {...props}
     >
-      <motion.svg
-        animate={controls}
+      <svg
         fill="none"
         height="24"
         stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <motion.path
+        <path d="M2 21a8 8 0 0 1 10.434-7.62" />
+        <circle cx="10" cy="8" r="5" />
+        <motion.g
           animate={controls}
-          d="M11 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"
-          initial="normal"
-          variants={PATH_VARIANTS}
-        />
-        <motion.path
-          animate={controls}
-          d="M13 5h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5"
-          initial="normal"
-          variants={PATH_VARIANTS}
-        />
-        <circle cx="12" cy="12" r="3" />
-        <motion.path
-          animate={controls}
-          d="m18 22-3-3 3-3"
-          initial="normal"
-          variants={PATH_VARIANTS}
-        />
-        <motion.path
-          animate={controls}
-          d="m6 2 3 3-3 3"
-          initial="normal"
-          variants={PATH_VARIANTS}
-        />
-      </motion.svg>
+          transition={COG_TRANSITION}
+          variants={COG_VARIANTS}
+        >
+          <circle cx="18" cy="18" r="3" />
+
+          <path d="m14.305 19.53.923-.382" />
+          <path d="m15.228 16.852-.923-.383" />
+          <path d="m16.852 15.228-.383-.923" />
+          <path d="m16.852 20.772-.383.924" />
+          <path d="m19.148 15.228.383-.923" />
+          <path d="m19.53 21.696-.382-.924" />
+          <path d="m20.772 16.852.924-.383" />
+          <path d="m20.772 19.148.924.383" />
+        </motion.g>
+      </svg>
     </div>
   );
 });
 
-SwitchCameraIcon.displayName = "SwitchCameraIcon";
+UserRoundCogIcon.displayName = "UserRoundCogIcon";
 
-export { SwitchCameraIcon };
+export { UserRoundCogIcon };

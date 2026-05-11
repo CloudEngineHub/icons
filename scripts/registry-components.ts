@@ -2477,12 +2477,6 @@ export const components: ComponentDefinition[] = [
     dependencies: ["motion"],
   },
   {
-    name: "phone-outgoing",
-    path: path.join(__dirname, "../icons/phone-outgoing.tsx"),
-    registryDependencies: [],
-    dependencies: ["motion"],
-  },
-  {
     name: "projector",
     path: path.join(__dirname, "../icons/projector.tsx"),
     registryDependencies: [],
@@ -2561,12 +2555,6 @@ export const components: ComponentDefinition[] = [
     dependencies: ["motion"],
   },
   {
-    name: "spotlight",
-    path: path.join(__dirname, "../icons/spotlight.tsx"),
-    registryDependencies: [],
-    dependencies: ["motion"],
-  },
-  {
     name: "switch-camera",
     path: path.join(__dirname, "../icons/switch-camera.tsx"),
     registryDependencies: [],
@@ -2587,6 +2575,36 @@ export const components: ComponentDefinition[] = [
   {
     name: "wifi-sync",
     path: path.join(__dirname, "../icons/wifi-sync.tsx"),
+    registryDependencies: [],
+    dependencies: ["motion"],
+  },
+  {
+    name: "briefcase-business",
+    path: path.join(__dirname, "../icons/briefcase-business.tsx"),
+    registryDependencies: [],
+    dependencies: ["motion"],
+  },
+  {
+    name: "credit-card",
+    path: path.join(__dirname, "../icons/credit-card.tsx"),
+    registryDependencies: [],
+    dependencies: ["motion"],
+  },
+  {
+    name: "user-round-cog",
+    path: path.join(__dirname, "../icons/user-round-cog.tsx"),
+    registryDependencies: [],
+    dependencies: ["motion"],
+  },
+  {
+    name: "users-round",
+    path: path.join(__dirname, "../icons/users-round.tsx"),
+    registryDependencies: [],
+    dependencies: ["motion"],
+  },
+  {
+    name: "wallet",
+    path: path.join(__dirname, "../icons/wallet.tsx"),
     registryDependencies: [],
     dependencies: ["motion"],
   },

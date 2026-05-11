@@ -66,6 +66,7 @@ import { BotMessageSquareIcon } from "@/icons/bot-message-square";
 import { BoxIcon } from "@/icons/box";
 import { BoxesIcon } from "@/icons/boxes";
 import { BrainIcon } from "@/icons/brain";
+import { BriefcaseBusinessIcon } from "@/icons/briefcase-business";
 import { CalendarCheckIcon } from "@/icons/calendar-check";
 import { CalendarCheck2Icon } from "@/icons/calendar-check-2";
 import { CalendarCogIcon } from "@/icons/calendar-cog";
@@ -122,8 +123,8 @@ import { ConstructionIcon } from "@/icons/construction";
 import { ContrastIcon } from "@/icons/contrast";
 import { CookingPotIcon } from "@/icons/cooking-pot";
 import { CopyIcon } from "@/icons/copy";
-import { CreditCardIcon } from "@/icons/credit-card";
 import { CpuIcon } from "@/icons/cpu";
+import { CreditCardIcon } from "@/icons/credit-card";
 import { CupSodaIcon } from "@/icons/cup-soda";
 import { CursorClickIcon } from "@/icons/cursor-click";
 import { DatabaseBackupIcon } from "@/icons/database-backup";
@@ -340,8 +341,8 @@ import { UserRoundPlusIcon } from "@/icons/user-round-plus";
 import { UsersIcon } from "@/icons/users";
 import { VibrateIcon } from "@/icons/vibrate";
 import { VolumeIcon } from "@/icons/volume";
-import { WashingMachineIcon } from "@/icons/washing-machine";
 import { WalletIcon } from "@/icons/wallet";
+import { WashingMachineIcon } from "@/icons/washing-machine";
 import { WavesIcon } from "@/icons/waves";
 import { WavesLadderIcon } from "@/icons/waves-ladder";
 import { WaypointsIcon } from "@/icons/waypoints";
@@ -361,7 +362,6 @@ import { BatteryChargingIcon } from "./battery-charging";
 import { BatteryPlusIcon } from "./battery-plus";
 import { BatteryWarningIcon } from "./battery-warning";
 import { BellElectricIcon } from "./bell-electric";
-import { BriefcaseBusinessIcon } from "./briefcase-business";
 import { ChessBishopIcon } from "./chess-bishop";
 import { ChessKingIcon } from "./chess-king";
 import { ChessKnightIcon } from "./chess-knight";
@@ -417,13 +417,13 @@ import { HandMetalIcon } from "./hand-metal";
 import { HeartHandshakeIcon } from "./heart-handshake";
 import { HeartPulseIcon } from "./heart-pulse";
 import { PhoneOffIcon } from "./phone-off";
-import { PhoneOutgoingIcon } from "./phone-outgoing";
 import { ProjectorIcon } from "./projector";
 import { RouterIcon } from "./router";
 import { SatelliteDishIcon } from "./satellite-dish";
-import { SpotlightIcon } from "./spotlight";
 import { SwitchCameraIcon } from "./switch-camera";
 import { TruckIcon } from "./truck";
+import { UserRoundCogIcon } from "./user-round-cog";
+import { UsersRoundIcon } from "./users-round";
 import { WifiCogIcon } from "./wifi-cog";
 import { WifiPenIcon } from "./wifi-pen";
 import { WifiSyncIcon } from "./wifi-sync";
@@ -492,6 +492,20 @@ const ICON_LIST: IconListItem[] = [
     keywords: ["receipt", "invoice", "receipt icon", "turkish lira", "lira"],
   },
   {
+    name: "briefcase-business",
+    icon: BriefcaseBusinessIcon,
+    keywords: [
+      "briefcase",
+      "business",
+      "work",
+      "office",
+      "case",
+      "luggage",
+      "job",
+      "career",
+    ],
+  },
+  {
     name: "wallet",
     icon: WalletIcon,
     keywords: [
@@ -537,11 +551,6 @@ const ICON_LIST: IconListItem[] = [
     keywords: ["phone", "off", "communication", "signal", "wireless"],
   },
   {
-    name: "phone-outgoing",
-    icon: PhoneOutgoingIcon,
-    keywords: ["phone", "outgoing", "communication", "signal", "wireless"],
-  },
-  {
     name: "router",
     icon: RouterIcon,
     keywords: ["router", "network", "communication", "signal", "wireless"],
@@ -555,17 +564,6 @@ const ICON_LIST: IconListItem[] = [
     name: "projector",
     icon: ProjectorIcon,
     keywords: ["projector", "screen", "display", "video", "projection"],
-  },
-  {
-    name: "spotlight",
-    icon: SpotlightIcon,
-    keywords: [
-      "spotlight",
-      "light",
-      "brightness",
-      "illumination",
-      "brightness",
-    ],
   },
   {
     name: "fan",
@@ -591,6 +589,16 @@ const ICON_LIST: IconListItem[] = [
     name: "wifi-pen",
     icon: WifiPenIcon,
     keywords: ["wifi", "pen", "edit", "write"],
+  },
+  {
+    name: "user-round-cog",
+    icon: UserRoundCogIcon,
+    keywords: ["user", "cog", "settings", "configuration"],
+  },
+  {
+    name: "users-round",
+    icon: UsersRoundIcon,
+    keywords: ["users", "group", "team", "people"],
   },
   {
     name: "layout-grid",

@@ -5308,19 +5308,6 @@
       ]
     },
     {
-      "name": "phone-outgoing",
-      "type": "registry:ui",
-      "registryDependencies": [],
-      "dependencies": ["motion"],
-      "devDependencies": [],
-      "files": [
-        {
-          "path": "phone-outgoing.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "projector",
       "type": "registry:ui",
       "registryDependencies": [],
@@ -5490,19 +5477,6 @@
       ]
     },
     {
-      "name": "spotlight",
-      "type": "registry:ui",
-      "registryDependencies": [],
-      "dependencies": ["motion"],
-      "devDependencies": [],
-      "files": [
-        {
-          "path": "spotlight.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "switch-camera",
       "type": "registry:ui",
       "registryDependencies": [],
@@ -5550,6 +5524,71 @@
       "files": [
         {
           "path": "wifi-sync.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "briefcase-business",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "briefcase-business.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "credit-card",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "credit-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "user-round-cog",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "user-round-cog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "users-round",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "users-round.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wallet",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "wallet.tsx",
           "type": "registry:ui"
         }
       ]
