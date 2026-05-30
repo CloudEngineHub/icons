@@ -66,6 +66,7 @@ import { BotMessageSquareIcon } from "@/icons/bot-message-square";
 import { BoxIcon } from "@/icons/box";
 import { BoxesIcon } from "@/icons/boxes";
 import { BrainIcon } from "@/icons/brain";
+import { BriefcaseBusinessIcon } from "@/icons/briefcase-business";
 import { CalendarCheckIcon } from "@/icons/calendar-check";
 import { CalendarCheck2Icon } from "@/icons/calendar-check-2";
 import { CalendarCogIcon } from "@/icons/calendar-cog";
@@ -123,6 +124,7 @@ import { ContrastIcon } from "@/icons/contrast";
 import { CookingPotIcon } from "@/icons/cooking-pot";
 import { CopyIcon } from "@/icons/copy";
 import { CpuIcon } from "@/icons/cpu";
+import { CreditCardIcon } from "@/icons/credit-card";
 import { CupSodaIcon } from "@/icons/cup-soda";
 import { CursorClickIcon } from "@/icons/cursor-click";
 import { DatabaseBackupIcon } from "@/icons/database-backup";
@@ -339,6 +341,7 @@ import { UserRoundPlusIcon } from "@/icons/user-round-plus";
 import { UsersIcon } from "@/icons/users";
 import { VibrateIcon } from "@/icons/vibrate";
 import { VolumeIcon } from "@/icons/volume";
+import { WalletIcon } from "@/icons/wallet";
 import { WashingMachineIcon } from "@/icons/washing-machine";
 import { WavesIcon } from "@/icons/waves";
 import { WavesLadderIcon } from "@/icons/waves-ladder";
@@ -364,7 +367,6 @@ import { BatteryPlusIcon } from "./battery-plus";
 import { BatteryWarningIcon } from "./battery-warning";
 import { BellElectricIcon } from "./bell-electric";
 import { BicepsFlexedIcon } from "./biceps-flexed";
-import { BriefcaseBusinessIcon } from "./briefcase-business";
 import { ChessBishopIcon } from "./chess-bishop";
 import { ChessKingIcon } from "./chess-king";
 import { ChessKnightIcon } from "./chess-knight";
@@ -378,7 +380,7 @@ import { CornerRightDownIcon } from "./corner-right-down";
 import { CornerRightUpIcon } from "./corner-right-up";
 import { CornerUpLeftIcon } from "./corner-up-left";
 import { CornerUpRightIcon } from "./corner-up-right";
-import { CreditCardIcon } from "./credit-card";
+import { FanIcon } from "./fan";
 import { FolderArchiveIcon } from "./folder-archive";
 import { FolderCheckIcon } from "./folder-check";
 import { FolderClockIcon } from "./folder-clock";
@@ -424,8 +426,17 @@ import { PhoneCallIcon } from "./phone-call";
 import { PhoneForwardedIcon } from "./phone-forwarded";
 import { PhoneIncomingIcon } from "./phone-incoming";
 import { PhoneMissedIcon } from "./phone-missed";
+import { PhoneOffIcon } from "./phone-off";
+import { ProjectorIcon } from "./projector";
+import { RouterIcon } from "./router";
+import { SatelliteDishIcon } from "./satellite-dish";
+import { SwitchCameraIcon } from "./switch-camera";
 import { TruckIcon } from "./truck";
-import { WalletIcon } from "./wallet";
+import { UserRoundCogIcon } from "./user-round-cog";
+import { UsersRoundIcon } from "./users-round";
+import { WifiCogIcon } from "./wifi-cog";
+import { WifiPenIcon } from "./wifi-pen";
+import { WifiSyncIcon } from "./wifi-sync";
 
 type IconListItem = {
   name: string;
@@ -434,46 +445,6 @@ type IconListItem = {
 };
 
 const ICON_LIST: IconListItem[] = [
-  {
-    name: "briefcase-business",
-    icon: BriefcaseBusinessIcon,
-    keywords: [
-      "briefcase",
-      "business",
-      "work",
-      "office",
-      "case",
-      "luggage",
-      "job",
-      "career",
-    ],
-  },
-  {
-    name: "wallet",
-    icon: WalletIcon,
-    keywords: [
-      "wallet",
-      "money",
-      "purse",
-      "billfold",
-      "cash",
-      "finance",
-      "payment",
-    ],
-  },
-  {
-    name: "credit-card",
-    icon: CreditCardIcon,
-    keywords: [
-      "credit card",
-      "card",
-      "payment",
-      "debit",
-      "money",
-      "finance",
-      "bank",
-    ],
-  },
   {
     name: "receipt",
     icon: ReceiptIcon,
@@ -601,6 +572,46 @@ const ICON_LIST: IconListItem[] = [
     ],
   },
   {
+    name: "briefcase-business",
+    icon: BriefcaseBusinessIcon,
+    keywords: [
+      "briefcase",
+      "business",
+      "work",
+      "office",
+      "case",
+      "luggage",
+      "job",
+      "career",
+    ],
+  },
+  {
+    name: "wallet",
+    icon: WalletIcon,
+    keywords: [
+      "wallet",
+      "money",
+      "purse",
+      "billfold",
+      "cash",
+      "finance",
+      "payment",
+    ],
+  },
+  {
+    name: "credit-card",
+    icon: CreditCardIcon,
+    keywords: [
+      "credit card",
+      "card",
+      "payment",
+      "debit",
+      "money",
+      "finance",
+      "bank",
+    ],
+  },
+  {
     name: "stamp",
     icon: StampIcon,
     keywords: [
@@ -615,29 +626,18 @@ const ICON_LIST: IconListItem[] = [
     ],
   },
   {
-    name: "alarm-clock-check",
-    icon: AlarmClockCheckIcon,
-    keywords: ["alarm", "clock", "check", "time", "schedule"],
-  },
-  {
-    name: "alarm-clock-minus",
-    icon: AlarmClockMinusIcon,
-    keywords: ["alarm", "clock", "check", "time", "schedule"],
-  },
-  {
-    name: "alarm-smoke",
-    icon: AlarmSmokeIcon,
-    keywords: ["alarm", "smoke", "fire", "smoke", "fire alarm"],
-  },
-  {
-    name: "alarm-clock-plus",
-    icon: AlarmClockPlusIcon,
-    keywords: ["alarm", "clock", "check", "time", "schedule"],
-  },
-  {
     name: "biceps-flexed",
     icon: BicepsFlexedIcon,
-    keywords: ["biceps", "flexed", "arm", "muscle", "strength"],
+    keywords: [
+      "biceps",
+      "flexed",
+      "muscle",
+      "arm",
+      "strong",
+      "fitness",
+      "workout",
+      "gym",
+    ],
   },
   {
     name: "phone",
@@ -650,9 +650,9 @@ const ICON_LIST: IconListItem[] = [
     keywords: ["phone", "call", "communication", "signal", "wireless"],
   },
   {
-    name: "phone-forward",
+    name: "phone-forwarded",
     icon: PhoneForwardedIcon,
-    keywords: ["phone", "forward", "communication", "signal", "wireless"],
+    keywords: ["phone", "forwarded", "communication", "signal", "wireless"],
   },
   {
     name: "phone-incoming",
@@ -663,6 +663,61 @@ const ICON_LIST: IconListItem[] = [
     name: "phone-missed",
     icon: PhoneMissedIcon,
     keywords: ["phone", "missed", "communication", "signal", "wireless"],
+  },
+  {
+    name: "phone-off",
+    icon: PhoneOffIcon,
+    keywords: ["phone", "off", "communication", "signal", "wireless"],
+  },
+  {
+    name: "router",
+    icon: RouterIcon,
+    keywords: ["router", "network", "communication", "signal", "wireless"],
+  },
+  {
+    name: "satellite-dish",
+    icon: SatelliteDishIcon,
+    keywords: ["satellite", "dish", "communication", "signal", "wireless"],
+  },
+  {
+    name: "projector",
+    icon: ProjectorIcon,
+    keywords: ["projector", "screen", "display", "video", "projection"],
+  },
+  {
+    name: "fan",
+    icon: FanIcon,
+    keywords: ["fan", "air", "ventilation", "breeze"],
+  },
+  {
+    name: "switch-camera",
+    icon: SwitchCameraIcon,
+    keywords: ["switch", "camera", "video", "photo", "capture"],
+  },
+  {
+    name: "wifi-cog",
+    icon: WifiCogIcon,
+    keywords: ["wifi", "cog", "settings", "configuration"],
+  },
+  {
+    name: "wifi-sync",
+    icon: WifiSyncIcon,
+    keywords: ["wifi", "sync", "synchronize", "update"],
+  },
+  {
+    name: "wifi-pen",
+    icon: WifiPenIcon,
+    keywords: ["wifi", "pen", "edit", "write"],
+  },
+  {
+    name: "user-round-cog",
+    icon: UserRoundCogIcon,
+    keywords: ["user", "cog", "settings", "configuration"],
+  },
+  {
+    name: "users-round",
+    icon: UsersRoundIcon,
+    keywords: ["users", "group", "team", "people"],
   },
   {
     name: "layout-grid",
